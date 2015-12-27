@@ -1,0 +1,31 @@
+<h1>Students</h1>
+<table class="table table-striped" ng-controller="studentsController">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Grade</th>
+			<th>Age</th>
+			<th>Resume</th>
+			<th>Action</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><input class="form-control" ng-model="student.name"></td>
+			<td><input class="form-control" ng-model="student.grade"></td>			
+			<td><input class="form-control" ng-model="student.age"></td>
+			<td><input class="form-control" ng-model="student.resume"></td>
+			<td><button class="btn btn-primary" ng-click="!disabledUpdate || createStudent()" ng-disabled="!disabledUpdate">Add Student</button></td>
+			<td><button class="btn btn-info" ng-click="disabledUpdate || update()" ng-disabled="disabledUpdate">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear</button></td>
+		</tr>
+		<tr ng-repeat="student in students">
+			<td>{{student.name}}</td>
+			<td>{{student.grade}}</td>
+			<td>{{student.age}}</td>
+			<td>{{student.resume}}</td>
+			<td><button class="btn btn-danger" ng-click="remove(student._id)">Remove</button></td>
+			<td><button class="btn btn-warning" ng-click="edit(student._id)">Edit</button></td><!--Call 1.0 -->
+		</tr>
+	</tbody>
+</table>

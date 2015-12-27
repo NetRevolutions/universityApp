@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="universityApp" ng-controller="mainController">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title></title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Incluir Css (Animate, Bootstrap, Jquery-UI, font-awesome) -->
+	    <link rel="stylesheet" type="text/css" href="css/animate.css">
+	    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+	    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
+
+	    <!-- Estilo personalizado -->
+	    <link rel="stylesheet" href="css/style.css">
+
+	    <!-- Incluir AngularJS y demas libs-->
+	    <script type="text/javascript" src="js/lib/angular.min.js"></script>
+	    <script type="text/javascript" src="js/lib/angular-resource.min.js"></script>
+	    <script type="text/javascript" src="js/lib/angular-route.min.js"></script>
+	    <script type="text/javascript" src="js/lib/angular-touch.min.js"></script>
+	    <script type="text/javascript" src="js/lib/jquery.min.js"></script>
+	    <script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+	    <script type="text/javascript" src="js/lib/ui-bootstrap.min.js"></script>
+
+	    <!-- Cotrollers -->
+	    <script type="text/javascript" src="/js/app.js"></script>
+	    <script type="text/javascript" src="/js/config.js"></script>
+
+	    <script type="text/javascript" src="/js/controllers/home-controller.js"></script>
+	    <script type="text/javascript" src="/js/controllers/students-controller.js"></script>
+	    <script type="text/javascript" src="/js/controllers/teachers-controller.js"></script>    
+
+	</head>
+	<body>		
+		<div ng-include="upperMenu"></div>
+		<div class="container">
+			<!-- La pagina principal irá aquí -->
+			<div ng-view></div>
+		</div>				
+	</body>
+</html>
