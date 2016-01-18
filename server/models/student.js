@@ -7,8 +7,14 @@ var Student = new Schema({
 		require	: true
 	},
 	grade : {
-		type	: String,
-		require	: true
+		id : {
+			type 	: String,
+			require	: true
+		},
+		name : {
+			type 	: String,
+			require	: true
+		}
 	},
 	age : {
 		type 	: Number,
@@ -34,12 +40,12 @@ Student.path('name').validate(
 	function(v){
 		return((v != '') && (v!=null));
 	});
-
+/*
 Student.path('grade').validate(
 	function(v){
 		return((v != '') && (v!=null));
 	});
-
+*/
 Student.path('age').validate(
 	function(v){
 		return((v != '') && (v!=null));

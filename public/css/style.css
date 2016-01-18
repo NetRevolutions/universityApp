@@ -6,5 +6,21 @@ body {
 .remove-space-left{
   padding-left: 0px;
 }
+.panel-custom {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #ff8da1;
+	margin-bottom: 1.25em;
+	padding: 40px;
+	background: pink;
+}
 
+.login-Left{
+    position: absolute;
+    top: 0%;
+    left: 90%;
+}
 
+.white, .white a {
+  color: #fff;
+}

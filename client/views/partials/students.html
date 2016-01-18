@@ -13,17 +13,22 @@
 	<tbody>
 		<tr>
 			<td><input class="form-control" ng-model="student.name"></td>
-			<td><input class="form-control" ng-model="student.grade"></td>			
+			<td>
+			<select ng-model="student.grade" ng-options="value.name for value in grades track by value.id" class="form-control">
+				<option value="">--Select --</option>
+			</select>
+			</td>			
 			<td><input class="form-control" ng-model="student.age"></td>
 			<td><input class="form-control" ng-model="student.resume"></td>
 			<td><button class="btn btn-primary" ng-click="!disabledUpdate || createStudent()" ng-disabled="!disabledUpdate">Add Student</button></td>
 			<td><button class="btn btn-info" ng-click="disabledUpdate || update()" ng-disabled="disabledUpdate">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear</button></td>
 		</tr>
 		<tr ng-repeat="student in students">
-			<td>{{student.name}}</td>
-			<td>{{student.grade}}</td>
+			<td>{{student.name | capitalize}}</td>
+			<td>{{student.grade.name | capitalize}}</td>
 			<td>{{student.age}}</td>
-			<td>{{student.resume}}</td>
+			<td>{{student.resume | maxLength: 15 | capitalize}}</td>
+			<!--<td>{{student.resume.length <= 15 ? student.resume : (student.resume | limitTo: 15) + ' ...'}}</td>-->
 			<td><button class="btn btn-danger" ng-click="remove(student._id)">Remove</button></td>
 			<td><button class="btn btn-warning" ng-click="edit(student._id)">Edit</button></td><!--Call 1.0 -->
 		</tr>

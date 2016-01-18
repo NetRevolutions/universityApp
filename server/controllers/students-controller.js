@@ -36,9 +36,9 @@ module.exports = function(app){
 			
 			if(req.body.name != null) student.name = req.body.name;
 			if(req.body.grade != null) student.grade = req.body.grade;
-			if(req.body.age != null) student.age = req.body.age;
+			if((req.body.age.id != null) && (req.body.age.name != '')) student.age = req.body.age;
 			if(req.body.resume != null) student.resume = req.body.resume;
-			student.updated = Date.now;
+			student.updated = new Date();
 
 			student.save(function(err2, doc){
 				if(err2)

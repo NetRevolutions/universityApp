@@ -6,7 +6,7 @@
 				<tr>
 					<td><input type="text" ng-model="search.name" class="form-control" placeholder="search here"></td>
 					<td><input type="text" ng-model="search.age" class="form-control" placeholder="search here"></td>
-					<td><input type="text" ng-model="search.course" class="form-control" placeholder="search here"></td>
+					<td><input type="text" ng-model="search.course.name" class="form-control" placeholder="search here"></td>
 					<td><input type="text" ng-model="search.bio" class="form-control" placeholder="search here"></td>
 					<th>&nbsp;</th>
 					<th>&nbsp;</th>
@@ -21,10 +21,10 @@
 				</tr>
 			</thead>
 			<tbody>		
-				<tr ng-repeat="teacher in teachers | filter:search | orderBy: column: reverse ">
+				<tr ng-repeat="teacher in teachers | filter:search | orderBy: column: reverse | limitTo: position | limitTo: -5 ">
 					<td>{{teacher.name}}</td>			
 					<td>{{teacher.age}}</td>
-					<td>{{teacher.course}}</td>
+					<td>{{teacher.course.name}}</td>
 					<td>{{teacher.bio.length <= 15 ? teacher.bio : (teacher.bio | limitTo: 15) + ' ...'}}</td>
 					<td><button class="btn btn-danger" ng-click="disabledUpdate || remove(teacher._id)" ng-disabled="disabledUpdate">Remove</button></td>
 					<td><button class="btn btn-warning" ng-click="disabledUpdate || edit(teacher._id)" ng-disabled="disabledUpdate">Edit</button></td><!--Call 1.0 -->
@@ -32,9 +32,16 @@
 			</tbody>
 			<tfoot>
 				<tr>				
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
+					<td colspan="3">
+						<div ng-if="teachers.length > 5">
+							<button class="btn btn-primary" ng-click = "before()">Before</button>
+							<button class="btn btn-primary" ng-click = "follow()">Follow</button>
+						</div>
+						<div ng-if="teachers.length <= 5">
+							&nbsp;	
+						</div>
+						<!--{{position}}-->
+					</td>					
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 					<td><button class="btn btn-primary" ng-click="disabledUpdate || newTeacher()" ng-disabled="disabledUpdate">Add Teacher</button></td>
@@ -54,8 +61,10 @@
 					<input type="text" class="form-control" ng-model="teacher.age">
 					<br>
 
-					Course:
-					<input type="text" class="form-control" ng-model="teacher.course">
+					Course:					
+					<select ng-model="teacher.course" ng-options="value.name for value in courses track by value.id" class="form-control">
+						<option value="">--Select --</option>
+					</select>
 					<br>
 
 					Bio:

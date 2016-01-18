@@ -11,8 +11,14 @@ var Teacher = new Schema({
 		require	: true
 	},
 	course : {
-		type 	: String,
-		require	: true
+		id: {
+			type	: String,
+			require : true
+		},
+		name: {
+			type 	: String,
+			require : true
+		}
 	},
 	bio : {
 		type 	: String,
@@ -38,10 +44,11 @@ Teacher.path('age').validate(
 	function(v){
 		return((v != '') && (v!=null));
 	});
+/*
 Teacher.path('course').validate(
 	function(v){
 		return((v != '') && (v!=null));
 	});
-
+*/
 //Exports the model
 module.exports = mongoose.model('Teacher', Teacher);

@@ -9,6 +9,20 @@
             <li ng-class="mTeachers"><a href="#/teachers">Teachers</a></li>
             <li ng-class="mStudents"><a href="#/students">Students</a></li>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div><!--/.nav-collapse -->     
+        <div class="collapse navbar-collapse navbar-ex1-collapse login-Left">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="javascript:void(0);" dropdown="" data-toggle="dropdown">                
+                <span class ="glyphicon glyphicon-user white"></span> <span id="menulblUserName"> Username</span><b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li ><a href="#/profile" id="liProfile" style="display: none;">Profile</a></li>
+                <li class="divider"></li>
+                <li><a ng-click="logout()" href="#/login"><span id="menulblSigInOut">Sign In</span></a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>             
     </div>
 </nav>

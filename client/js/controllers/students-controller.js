@@ -1,6 +1,17 @@
-app.controller('studentsController', ['$scope', '$http', 
-	function ($scope, $http) {
-		$scope.setActive('mStudents');
+app.controller('studentsController', ['$scope', '$http', 'auth',
+	function ($scope, $http, auth) {
+		auth.checkStatus();
+
+		$scope.setActive('mStudents');	
+		
+		var grades = function(){			
+			$http.get('/js/json/grades.json').success(function(data){
+				$scope.grades = data;
+			});
+
+		}
+
+		grades();
 
 		var refresh = function(){
 			$scope.disabledUpdate = true;

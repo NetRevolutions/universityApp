@@ -36,7 +36,7 @@ module.exports = function(app){
 
 			if(req.body.name != null) teacher.name = req.body.name;
 			if(req.body.age != null) teacher.age = req.body.age;
-			if(req.body.course != null) teacher.course = req.body.course;
+			if((req.body.course.id != null) && (req.body.course.name != '')) teacher.course = req.body.course;
 			if(req.body.bio != null) teacher.bio = req.body.bio;
 			teacher.updated = new Date();
 
