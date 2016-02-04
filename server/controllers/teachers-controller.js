@@ -10,7 +10,7 @@ module.exports = function(app){
 			res.json(result);
 		});
 	};
-
+	
 	list = function(req, res){
 		Teacher.find({}, function(err, results){
 			if(err)
@@ -18,7 +18,7 @@ module.exports = function(app){
 			res.json(results);
 		});
 	};
-
+	
 	listById = function(req,res){
 		var id = req.params.id;
 		Teacher.findOne({_id: id}, function(err, results){
@@ -56,11 +56,12 @@ module.exports = function(app){
 			res.json(results);
 		});
 	};
-
+	
 	//Links routes and actions
 	app.get('/api/teachers', list);
 	app.get('/api/teachers/:id', listById);	
 	app.post('/api/teachers', create);
 	app.put('/api/teachers/:id', update);
 	app.delete('/api/teachers/:id', remove);
+	
 }
